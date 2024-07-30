@@ -23,7 +23,7 @@ st.write(content)
     
 col3, div_col, col4 = st.columns([1.5, 0.5, 1.5])
 
-data = pd.read_csv("backend/data.csv", sep = ";")#[:1]
+data = pd.read_csv("backend/data.csv", sep = ";")[:2]
 with col3:
     for index, row in data[::2].iterrows():
         st.header(row["title"])
