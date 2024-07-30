@@ -21,12 +21,20 @@ Below you can find some of the apps I have builts in Python. Feel free to contac
 """
 st.write(content)
     
-col3, col4 = st.columns(2)
+col3, div_col, col4 = st.columns([1.5, 0.5, 1.5])
 
-data = pd.read_csv("backend/data.csv", sep = ";")
+data = pd.read_csv("backend/data.csv", sep = ";")#[:1]
 with col3:
     for index, row in data[::2].iterrows():
         st.header(row["title"])
+        st.write(row["description"])
+        st.image(IMAGEPATH + row["image"])
+        st.write(f"[Source Code]({row['url']})")
+
 with col4:
     for index, row in data[1::2].iterrows():
         st.header(row["title"])
+        st.write(row["description"])
+        st.image(IMAGEPATH + row["image"])
+        st.write(f"[Source Code]({row['url']})")
+    
