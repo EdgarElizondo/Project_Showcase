@@ -1,4 +1,5 @@
 import streamlit as st
+import pandas as pd
 
 IMAGEPATH = "backend/images/"
 DESCRIPTIONPATH = "backend/description/"
@@ -20,3 +21,12 @@ Below you can find some of the apps I have builts in Python. Feel free to contac
 """
 st.write(content)
     
+col3, col4 = st.columns(2)
+
+data = pd.read_csv("backend/data.csv", sep = ";")
+with col3:
+    for index, row in data[::2].iterrows():
+        st.header(row["title"])
+with col4:
+    for index, row in data[1::2].iterrows():
+        st.header(row["title"])
